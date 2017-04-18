@@ -29,6 +29,7 @@
 				if(regex.test(text)) {
 					toot.remove();
 				}
+    }
 
     function saveSettings(event) {
         if (event.target.tagName.toLowerCase() === 'button' && event.target.textContent === 'Save changes') {
