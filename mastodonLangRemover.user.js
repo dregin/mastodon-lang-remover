@@ -29,7 +29,7 @@
 				if(regex.test(text)) {
 					toot.remove();
 				}
-        return GM_getValue('lang', 'ja')
+        return String(GM_getValue('lang', 'ja'));
     }
 
     function saveSettings(event) {
