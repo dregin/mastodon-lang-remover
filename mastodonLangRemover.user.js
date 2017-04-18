@@ -11,7 +11,6 @@
 // @connect      obscure-fjord-89228.herokuapp.com
 // @grant        GM_getValue
 // @grant        GM_setValue
-// @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // ==/UserScript==
 
@@ -27,29 +26,10 @@
         var langText = {};
         var text = toot.children('.status__content').text()
                    .replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
-        text = encodeURIComponent(text);
-        GM_xmlhttpRequest({
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            },
-            url: "https://obscure-fjord-89228.herokuapp.com/lang/"+text,
-            onload: function(res) {
-                var resJson = JSON.parse(res.responseText);
-                langText = resJson.lang;
-                if(langText==GM_getValue('lang', 'ja')) {
-                    toot.remove();
-                    console.log("RM--" + toot.children('.status__content').text());
-                } else {
-                    console.log(langText + '==' + toot.children('.status__content').text());
-                }
-            },
-            onerror: function() {
-                console.log('There was an error');
-            }
-        });
-        return String(langText);
-    }
+				var regex = /[\u3000-\u303F]|[\u3040-\u309F]|[\u30A0-\u30FF]|[\uFF00-\uFFEF]|[\u4E00-\u9FAF]|[\u2605-\u2606]|[\u2190-\u2195]|\u203B/g; 
+				if(regex.test(text)) {
+					toot.remove();
+				}
 
     function saveSettings(event) {
         if (event.target.tagName.toLowerCase() === 'button' && event.target.textContent === 'Save changes') {
