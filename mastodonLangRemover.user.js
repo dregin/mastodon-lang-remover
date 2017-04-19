@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         mastodonLangRemover
+// @name         mastodonLangRemoverJS
 // @namespace    https://arthurlacoste.com
 // @version      0.0.1
 // @description  Remove a lang from web interface
-// @author       Arthur Lacoste <arthak@gmail.com>
+// @author       Arthur Lacoste <arthak@gmail.com>, Bernard McKeever <dregin@gmail.com>
 // @match        *://*/web/*
 // @match        *://*/settings/preferences
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js
