@@ -21,18 +21,9 @@ https://mastodon.social/web/
 
 ## Can I edit the langage to remove ?
 
-By default, the script remove Japanese toots, but you can remove another langage
+By default, the script remove Japanese, Chinese, French, German, Spanish... basically any toots that have include characters outside of a-z, A-Z and special characters such as !@#$%^&*():?]/
 
-Just go to settings/preferences on your Mastodon web interface, and edit the "Lang Remover" on the bottom of the page. Click on "save changes", and you can remove this one.
 
 ## How it's work ?
 
-The script call a NodeJS server usinge Google Translate API to detect toot langage, he give a JSON array like that :
-
-https://obscure-fjord-89228.herokuapp.com/lang/obrigado
-
-```
-{"lang":"pt"}
-```
-
-This code part can be found in another repo call [Detect Lang Server](https://github.com/arthurlacoste/detect-lang-server).
+The script uses regex to look for specific character ranges and hides toots that match.
